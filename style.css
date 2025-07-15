@@ -704,151 +704,90 @@ footer .footer-links {
   margin: 0 10px;
   text-decoration: underline;
 }
+.main-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-/* 1️⃣ Prevent stacking of flex layouts on tablet and phone */
-@media (max-width: 1200px) {
-  .about-container {
-    flex-wrap: nowrap;
-  }
 
-  .procurement-container {
-    flex-direction: row;
-  }
+/* 📱 MOBILE FRIENDLY RESPONSIVENESS */
 
-  .partner-contact {
-    flex-direction: row;
-  }
-
+/* 1️⃣ Tablet (<= 1024px) */
+@media (max-width: 1024px) {
+  /* Allow flex layouts to wrap */
+  .about-container,
+  .procurement-container,
+  .partner-contact,
   .services-grid {
-    flex-wrap: nowrap;
-  }
-}
-
-/* 2️⃣ Maintain same grid columns everywhere */
-@media (max-width: 1200px) {
-  .about-images-grid {
-    grid-template-columns: repeat(2, 1fr);
+    flex-wrap: wrap;
+    flex-direction: row;
   }
 
+  /* Make grid columns stack better */
+  .about-images-grid,
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
-}
 
-/* 3️⃣ Keep font sizes same */
-@media (max-width: 1200px) {
+  /* Keep hero title big enough */
   #hero-title span {
-    font-size: 3em;
-  }
-
-  .section-heading,
-  .section-title,
-  .section-title.center-blue {
-    font-size: 2rem;
-  }
-
-  .service-card h3 {
-    font-size: 1.2rem;
-  }
-
-  .service-card p {
-    font-size: 0.95rem;
-  }
-
-  .testimonial-message {
-    font-size: 0.9rem;
-  }
-
-  .testimonial-name-box {
-    font-size: 1.1rem;
+    font-size: 2.5em;
   }
 }
 
-/* 4️⃣ Prevent grid columns collapsing on smaller devices */
+/* 2️⃣ Mobile (<= 768px) */
 @media (max-width: 768px) {
-  .about-images-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  }
-}
-
-/* 5️⃣ Disable flex stacking on smaller screens */
-@media (max-width: 768px) {
-  .about-container {
-    flex-wrap: nowrap;
-  }
-
-  .procurement-container {
-    flex-direction: row;
-  }
-
-  .partner-contact {
-    flex-direction: row;
-  }
-
+  /* Stack flex items vertically */
+  .about-container,
+  .procurement-container,
+  .partner-contact,
   .services-grid {
-    flex-wrap: nowrap;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
   }
-}
 
-/* 6️⃣ Keep hero heading big on mobile */
-@media (max-width: 768px) {
+  /* Make hero title smaller */
   #hero-title span {
-    font-size: 3em;
-  }
-}
-
-/* 7️⃣ Force no text resizing and no layout changes on tiny screens */
-@media (max-width: 480px) {
-  html {
-    font-size: 100%;
+    font-size: 2em;
   }
 
-  body {
-    overflow-x: auto;
+  /* Center CTA buttons nicely */
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 
-  .about-container {
-    flex-wrap: nowrap;
+  .btn {
+    font-size: 1.2em;
+    width: auto;
+    padding: 12px 24px;
   }
 
-  .procurement-container {
-    flex-direction: row;
-  }
-
-  .partner-contact {
-    flex-direction: row;
-  }
-
-  .services-grid {
-    flex-wrap: nowrap;
-  }
-
-  .about-images-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
+  /* Grids stack columns */
+  .about-images-grid,
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   }
 
-  #hero-title span {
-    font-size: 3em;
-  }
-
-  .testimonial-swiper {
-    max-width: none;
-  }
-
+  /* Testimonials adjust padding */
   .testimonial-card {
-    padding: 1.8rem 2rem;
+    padding: 1rem 1rem;
   }
 }
 
-/* 8️⃣ Make sure no image scales down automatically */
-img {
-  max-width: none;
+/* 3️⃣ Tiny screens (<= 480px) */
+@media (max-width: 480px) {
+  #hero-title span {
+    font-size: 1.5em;
+  }
+
+  .btn {
+    font-size: 1em;
+    padding: 10px 20px;
+  }
 }
