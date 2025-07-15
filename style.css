@@ -429,16 +429,6 @@ a {
   justify-content: space-around;
 }
 
-
-.partner-box,
-.contact-box {
-  flex: 1 1 400px;
-  background: #f5faff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-}
-
 .partner-box,
 .contact-box {
   position: relative;
