@@ -9,6 +9,7 @@ body {
   background: #fdfdfd;
   color: #333;
   line-height: 1.6;
+
 }
 
 a {
@@ -165,6 +166,7 @@ a {
 
 .about-text {
   flex: 1 1 40%;
+  margin: 10px;
   font-size: 1.1rem;
   line-height: 1.6;
   color: #333;
@@ -200,10 +202,9 @@ a {
 
 
 .services-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .service-card {
@@ -212,7 +213,6 @@ a {
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 280px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -385,10 +385,11 @@ a {
 }
 
 
-.core-values {
-  background: url('images/bg-core.jpg') no-repeat center center/cover;
-  color: #fff;
+.Core-value {
+  color: #005fa3;
   padding: 60px 20px;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .grid-overlay {
@@ -415,13 +416,13 @@ a {
 
 .contact-box img {
   width: 100%;
-  max-height: 200px;
+  max-height: 250px;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 20px;
 }
 
-.partner-contact {
+.contact-us {
   display: flex;
   flex-wrap: wrap;
   padding: 40px 20px;
@@ -429,7 +430,8 @@ a {
   justify-content: space-around;
 }
 
-.partner-box,
+
+
 .contact-box {
   position: relative;
   background: #fff;
@@ -437,16 +439,23 @@ a {
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease;
-  z-index: 1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.partner-box:hover,
+.contact-heading {
+  color: #005fa3;
+  text-align: center;
+  font-weight: 700;
+  font-size: 2rem;
+  font-family: sans-serif, 'Segoe UI';
+}
+
 .contact-box:hover {
   transform: translateY(-5px);
 }
 
-.partner-box::before,
+
 .contact-box::before {
   content: '';
   position: absolute;
@@ -455,11 +464,11 @@ a {
   right: -3px;
   bottom: -3px;
   background: linear-gradient(90deg, #c2e9fb, #a1c4fd, #d4fc79, #96e6a1);
-  background-size: 400% 400%;
+  background-size: 200%;
   border-radius: 15px;
   z-index: -1;
   animation: border-glow 4s linear infinite;
-  opacity: 1;
+  opacity: 6;
   /* reduced brightness */
 }
 
@@ -478,7 +487,7 @@ a {
   }
 }
 
-.partner-box button,
+
 .contact-box button {
   position: relative;
   padding: 10px 25px;
@@ -493,7 +502,7 @@ a {
   z-index: 1;
 }
 
-.partner-box button::before,
+
 .contact-box button::before {
   content: "";
   position: absolute;
@@ -506,23 +515,17 @@ a {
   transition: left 0.4s ease;
 }
 
-.partner-box button:hover::before,
+
 .contact-box button:hover::before {
   left: 0;
 }
 
-.partner-box button:hover,
+
 .contact-box button:hover {
   color: white;
 }
 
-.partner-box img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
+
 
 form input,
 form textarea {
@@ -651,9 +654,19 @@ form button:hover {
   cursor: pointer;
 }
 
+.heading {
+  margin: 10px;
+  color: black;
+  font-weight: 700;
+  font-size: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 10px;
+}
+
 .faq .question {
   font-weight: bold;
   color: #004080;
+  margin: 10px;
   background-color: #f1f9ff;
   padding: 10px;
   border-radius: 5px;
@@ -683,35 +696,81 @@ footer {
   color: #fff;
   text-align: center;
   padding: 30px 20px;
+
 }
 
-footer .footer-links {
+
+.footer-links {
   margin-top: 10px;
 }
+
 
 .footer-links a {
   color: #fff;
   margin: 0 10px;
   text-decoration: underline;
 }
+
+.section-heading {
+  color: #f5f5f5;
+  font-weight: 600;
+  font-size: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 20px;
+
+}
+
 .main-wrapper {
   max-width: 1200px;
   margin: 0 auto;
 }
 
 
-/* 📱 MOBILE FRIENDLY RESPONSIVENESS */
+/* responsive styles */
+/*Destop*/
+@media screen and (min-width: 1024px) {
 
-/* 1️⃣ Tablet (<= 1024px) */
-@media (max-width: 1024px) {
   /* Allow flex layouts to wrap */
   .about-container,
   .procurement-container,
-  .partner-contact,
-  .services-grid {
+  .contact-us {
     flex-wrap: wrap;
     flex-direction: row;
   }
+
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Make grid columns stack better */
+  .about-images-grid,
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  /* Keep hero title big enough */
+  #hero-title span {
+    font-size: 3em;
+  }
+
+}
+
+/*  Tablet */
+@media screen and (min-width:768px) and (max-width: 1024px) {
+
+  /* Allow flex layouts to wrap */
+  .about-container,
+  .procurement-container,
+  .contact-us {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+
+  .services-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+
 
   /* Make grid columns stack better */
   .about-images-grid,
@@ -726,15 +785,21 @@ footer .footer-links {
 }
 
 /* 2️⃣ Mobile (<= 768px) */
-@media (max-width: 768px) {
-  /* Stack flex items vertically */
+@media screen and (max-width: 767px) {
+
+
   .about-container,
   .procurement-container,
-  .partner-contact,
-  .services-grid {
+  .contact-us {
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+    overflow: hidden;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+
   }
 
   /* Make hero title smaller */
@@ -758,6 +823,9 @@ footer .footer-links {
     padding: 12px 24px;
   }
 
+
+
+
   /* Grids stack columns */
   .about-images-grid,
   .grid {
@@ -776,8 +844,11 @@ footer .footer-links {
     font-size: 1.5em;
   }
 
+
   .btn {
     font-size: 1em;
     padding: 10px 20px;
+
   }
+
 }
